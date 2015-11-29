@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  
+<title></title>
+  
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+ <link rel="stylesheet" href="C:/Users/user/Desktop/Santosh/bootstrap.min.css">
+ 
+ <script src="C:/Users/user/Desktop/Santosh/jquery-1.11.3.js"></script>
+
+  <script src="C:/Users/user/Desktop/Santosh/bootstrap.min.js"></script>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script></head>
+
+<body >
+<form  ng-app="myApp" ng-controller="demo" class="col-md-4">
+<p id="img" style="display:none;color:red;font-size:16px;">Redirecting to a payment gateway</p>
+<div class="form-group " style="margin-top:5%">
+<p  placeholder="" >Full Name</p>
+    </div>
+    
+    <div class="form-group ">
+        <input type="text" class="form-control " placeholder="" ng-model="fullName">
+    </div>
+<div>
+
+    </div>
+
+    <div class="form-group ">
+<p  placeholder="" >Card Details</p>
+        <input type="text" class="form-control" placeholder="" maxlength="16" ng-model="cardNo">
+    </div>
+	<div class="form-group ">
+<p  placeholder="" >Security Key</p>
+        <input type="text" class="form-control" placeholder="" maxlength="16" ng-model="securityKey">
+    </div>
+
+	  
+           
+	
+	<div class='input-group date form-group' id='datetimepicker1'>
+	Date
+                     <input type="text" class="form-control" placeholder="" maxlength="16" ng-model="expDate">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+				
+				<input type="button" id="buttonID" value="Pay" class="btn btn-primary btn-block"/	>
+	
+  
+
+</form>
+
+
+<script type="text/javascript">
+          $('#buttonID').click(function(){
+  $('#img').show(); //<----here
+  })
+        </script>
+		<script>
+var app = angular.module('myApp', []);
+
+app.controller('demo', function($scope,$http) {
+
+
+$http.get('http://192.168.43.211:8080/WebService2/user?email_id=ashishbhatiya18@gmail.com')
+  .success(function(data) {
+  $scope.fullName=data.fullName;
+  $scope.cardNo=data.cardNo;
+  $scope.expDate=data.expDate;
+  })
+  })
+
+</script>
+
+</body>
+</html>
